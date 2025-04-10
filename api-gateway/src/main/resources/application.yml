@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: organization-service
+          uri: lb://organization-service
+          predicates:
+            - Path=/organizations/**
+          filters:
+            - StripPrefix=1
+        - id: event-service
+          uri: lb://event-service
+          predicates:
+            - Path=/events/**
+          filters:
+            - StripPrefix=1
+        - id: news-service
+          uri: lb://news-service
+          predicates:
+            - Path=/news/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/

@@ -1,0 +1,15 @@
+type News {
+  id: ID!
+  title: String!
+  content: String!
+}
+
+type Query {
+  findAllNews: [News]
+  findNewsById(id: ID!): News
+}
+
+type Mutation {
+  createNews(title: String!, content: String!): News
+  deleteNews(id: ID!): Boolean
+}
