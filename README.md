@@ -19,6 +19,11 @@ This project demonstrates a microservices architecture with the following compon
 
 1. Clone this repo
 
+```
+git clone git@github.com:seraaaaaaaa/spring-microservices.git
+cd spring-microservices
+```
+
 2. Build JARs using the provided script:
 
 - On Windows: `build.bat`
@@ -29,17 +34,15 @@ This project demonstrates a microservices architecture with the following compon
 
 ```
 docker-compose up --build
-
 ```
 
 4. Access the services:
 
-| Service            | URL                                 |
-| ------------------ | ----------------------------------- |
-| Eureka Dashboard   | http://localhost:8761               |
-| API Gateway        | http://localhost:8080               |
-| RabbitMQ UI        | http://localhost:15672              |
-| GraphQL Playground | http://localhost:8080/news/graphiql |
+| Service          | URL                    |
+| ---------------- | ---------------------- |
+| Eureka Dashboard | http://localhost:8761  |
+| API Gateway      | http://localhost:8080  |
+| RabbitMQ UI      | http://localhost:15672 |
 
 ## 🔁 Flow Overview
 

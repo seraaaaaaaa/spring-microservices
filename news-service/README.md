@@ -68,7 +68,6 @@ mutation {
         content
     }
 }
-
 ```
 
 </td>
@@ -84,7 +83,6 @@ mutation {
         content
     }
 }
-
 ```
 
 </td>
@@ -97,8 +95,6 @@ mutation {
 mutation {
     deleteNews(id: 1)
 }
-
-
 ```
 
 </td>
