@@ -4,12 +4,24 @@ server:
 spring:
   application:
     name: api-gateway
+  banner:
+    location: classpath:banner.txt
+  data:
+    redis:
+      host: redis
+      port: 6379
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
+      default-filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 3
+            redis-rate-limiter.burstCapacity: 3
+            key-resolver: "#{@ipKeyResolver}"
       routes:
         - id: organization-service
           uri: lb://organization-service

@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   # Eureka Discovery Server
   eureka-server:
@@ -17,6 +16,7 @@ services:
       - "8080:8080"
     depends_on:
       - eureka-server
+      - redis
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     networks:
@@ -32,6 +32,7 @@ services:
       - eureka-server
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_REDIS_HOST=redis
     networks:
       - spring-cloud
 
@@ -75,6 +76,14 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - spring-cloud
+
+  #Redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
     networks:
       - spring-cloud
 
