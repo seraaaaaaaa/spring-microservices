@@ -1,12 +1,14 @@
 ## Configuration Notes
 
-If running manually, use docker to run **RabbitMQ**
+### 🖱️ If running manually :
+
+- use docker to run **RabbitMQ**
 
 ```
 docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ```
 
-If running manually, use localhost in `application.properties`
+- use localhost in `application.properties`
 
 ```
 eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
@@ -15,7 +17,9 @@ eureka.instance.hostname=localhost
 spring.rabbitmq.host=localhost
 ```
 
-If using **Docker Compose**, use service names (not localhost) in `application.properties`
+### 🐳 If using Docker Compose :
+
+- use service names (not localhost) in `application.properties`
 
 ```
 eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/

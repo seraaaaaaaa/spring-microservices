@@ -6,17 +6,9 @@ A Spring Boot application that demonstrates the use of GraphQL.
 
 ## Configuration Notes
 
-If using **Docker Compose**, use service names (not localhost) in `application.properties`
+### 🖱️ If running manually :
 
-```
-eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
-eureka.instance.hostname=news-service
-
-spring.rabbitmq.host=rabbitmq
-
-```
-
-If running manually, use localhost in `application.properties`
+- use localhost in `application.properties`
 
 ```
 eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
@@ -26,11 +18,21 @@ spring.rabbitmq.host=localhost
 
 ```
 
-## GraphQL Playground
-
-Use this IDE to run queries, explore the schema, and test the GraphQL API.
+- use the GraphQL Playground to run queries, explore the schema, and test the GraphQL API.
 
 http://localhost:8083/graphiql
+
+### 🐳 If using Docker Compose :
+
+- use service names in `application.properties`
+
+```
+eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+eureka.instance.hostname=news-service
+
+spring.rabbitmq.host=rabbitmq
+
+```
 
 ## GraphQL Queries
 

@@ -2,7 +2,7 @@
 
 This project demonstrates a microservices architecture with the following components:
 
-- `api-gateway`: Central entry point using **Spring Cloud**, supports dynamic routing and load balancing
+- `api-gateway`: Central entry point using **Spring Cloud** and **Redis**, supports dynamic routing, load balancing and rate limiting
 - `eureka-server`: Service registry and discovery using **Netflix Eureka**
 - `organization-service`: Manages organizations, exposes REST endpoints, and is called via **FeignClient**
 - `event-service`: Manages events, communicates asynchronously via **RabbitMQ**
@@ -40,21 +40,21 @@ docker-compose up --build
 
 | Service          | URL                    |
 | ---------------- | ---------------------- |
-| Eureka Dashboard | http://localhost:8761  |
 | API Gateway      | http://localhost:8080  |
+| Eureka Dashboard | http://localhost:8761  |
 | RabbitMQ UI      | http://localhost:15672 |
 
 ## 🔁 Flow Overview
 
 1. All services register themselves with **Eureka**.
 
-2. `event-service` uses **FeignClient** to communicate with `organization-service` by service name.
+2. The `event-service` uses **FeignClient** to communicate with the `organization-service` by service name.
 
 3. When an event is created, a message is sent to **RabbitMQ**.
 
-4. `news-service` listens for incoming messages and creates a related news entry.
+4. The `news-service` listens for incoming messages and creates a related news entry.
 
-5. External requests go through the **API Gateway**, which handles routing and load balancing.
+5. External requests go through the **API Gateway**, which manages routing, load balancing, and rate limiting with **Redis**.
 
 ## 📄 License
 
